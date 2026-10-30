@@ -1,4 +1,3 @@
-# Same-Stats-Different-Graphs
 # Same Stats, Different Graphs: Simulated Annealing for Dataset Generation
 
 **Defence Institute of Advanced Technology (DIAT), Pune**  
