@@ -51,14 +51,52 @@ The project is structured sequentially across four primary Jupyter Notebooks:
  ┃ ┗ 🖼️ star_sa.png
  ┗ 📜 README.md
 ```
-⚙️ The Mathematical Engine: Simulated Annealing. The core of Phase 3 is a stochastic optimization algorithm designed to manipulate coordinates without triggering statistical alarms.1. The Gatekeeper (Statistical Constraint): A random coordinate is selected and perturbed via Gaussian noise. The modified dataset is immediately processed through the custom NumPy functions. If the new variance or correlation deviates from the original dino baseline by a tolerance greater than 0.1, the move is instantly rejected.2. The Objective Function (Spatial Cost)If the perturbation passes the statistical gatekeeper, its Euclidean distance to the target star geometry is calculated. Moves that decrease this cost are accepted. To prevent the points from becoming trapped in local minima, moves that increase the cost are accepted probabilistically based on the current system temperature $T$, defined by the formula: $P = e^{(-\Delta \text{Cost} / T)}$. Engine Performance Metrics: Iterations Executed: 150,000Cooling Rate: 0.9995Initial Spatial Cost: 1103.80Final Spatial Cost: 216.86Result: Achieved an 80.35% reduction in spatial divergence while perfectly preserving the dataset's statistical signature.📊 Visual Proof(Insert high-resolution comparative plots here displaying the original dino geometry vs. the morphed SA star geometry). Note on Geometric "Noise": The slight geometric scattering observed in the final star shape is the direct physical manifestation of the strict mathematical constraints holding the variance and correlation steady. The algorithm found the absolute closest physical approximation of a star that mathematically still acts like a dinosaur.👥 Team & Contributions: Aniruddha (Lead): Architecture Design & Simulated Annealing Engine Optimization; Sourabh: ETL Pipeline & Data Sanitization; Ritik: Pure NumPy Baseline Mathematical Equations; Astha: Documentation, Visualization, and Reporting Framework. 🚀 How to Run: Clone the repository: git clone https://github.com/Anniendl/Same-Stats-Different-Graphs.gitEnsure dependencies are installed: pip install numpy pandas matplotlib. Execute the notebooks sequentially from 01 to 04 to trace the data pipeline from raw ingestion to final geometric morphing.
 
+---
 
+## ⚙️ The Mathematical Engine: Simulated Annealing
 
+The core of Phase 3 is a stochastic optimization algorithm designed to manipulate coordinates without triggering statistical alarms. 
 
+### 1. The Gatekeeper (Statistical Constraint)
+A random coordinate is selected and perturbed via Gaussian noise. The modified dataset is immediately processed through the custom NumPy functions. If the new variance or correlation deviates from the original `dino` baseline by a tolerance greater than **`0.1`**, the move is instantly rejected.
 
+### 2. The Objective Function (Spatial Cost)
+If the perturbation passes the statistical gatekeeper, its Euclidean distance to the target `star` geometry is calculated. Moves that decrease this cost are accepted. To prevent the points from becoming trapped in local minima, moves that *increase* the cost are accepted probabilistically based on the current system temperature $T$, defined by the formula: $P = e^{(-\Delta \text{Cost} / T)}$.
 
+### Engine Performance Metrics
+* **Iterations Executed:** 150,000
+* **Cooling Rate:** 0.9995
+* **Initial Spatial Cost:** 1103.80
+* **Final Spatial Cost:** 216.86
+* **Result:** Achieved an **80.35% reduction** in spatial divergence while perfectly preserving the dataset's statistical signature.
 
+---
 
+## 📊 Visual Proof
 
+*(Insert high-resolution comparative plots here displaying the original dino geometry vs. the morphed SA star geometry)*
 
+<div align="center">
+  <img src="Assets/dino.png" width="45%" />
+  <img src="Assets/star_sa.png" width="45%" />
+</div>
+
+> **Note on Geometric "Noise":** The slight geometric scattering observed in the final star shape is the direct physical manifestation of the strict mathematical constraints holding the variance and correlation steady. The algorithm found the absolute closest physical approximation of a star that mathematically still acts like a dinosaur.
+
+---
+
+## 👥 Team & Contributions
+
+* **Aradhya Dev Tripathi (Lead):** Architecture Design & Simulated Annealing Engine Optimization
+* **Sourabh:** ETL Pipeline & Data Sanitization
+* **Ritik:** Pure NumPy Baseline Mathematical Equations
+* **Astha:** Documentation, Visualization, and Reporting Framework
+
+---
+
+## 🚀 How to Run
+
+1. Clone the repository: `git clone https://github.com/Anniendl/Same-Stats-Different-Graphs.git`
+2. Ensure dependencies are installed: `pip install numpy pandas matplotlib`
+3. Execute the notebooks sequentially from `01` to `04` to trace the data pipeline from raw ingestion to final geometric morphing.
