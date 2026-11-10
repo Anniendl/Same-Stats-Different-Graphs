@@ -45,6 +45,12 @@ The repository is structured sequentially across four primary Jupyter Notebooks 
  ┃ ┣ 🖼️ anscombe.png
  ┃ ┣ 🖼️ dino.png
  ┃ ┗ 🖼️ star_sa.png
+ ┣ 📂 Report
+ ┃ ┣ 📜 main.tex                             # LaTeX Source Code
+ ┃ ┗ 📜 Same_Stats__Different_Graphs.pdf     # Final Compiled Report
+ ┣ 📂 Presentation
+ ┃ ┣ 📜 Same Stats, Different Graphs (PPT).pptx
+ ┃ ┗ 📜 Same Stats, Different Graphs PPT (PDF).pdf
  ┗ 📜 README.md
 ```
 
