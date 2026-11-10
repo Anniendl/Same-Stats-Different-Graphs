@@ -1,15 +1,21 @@
 <div align="center">
   <h1>🦖 Same Stats, Different Graphs</h1>
   <h3>Statistical Validation and Geometric Morphing via Simulated Annealing</h3>
-  
+
   [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
   [![NumPy](https://img.shields.io/badge/NumPy-Pure-green.svg)](https://numpy.org/)
   [![Status](https://img.shields.io/badge/Status-Completed-success.svg)]()
+  
+  <br>
+  <strong>Course: AM609L DSTT Lab</strong>
 </div>
-Ritik Joshi (Reg No: 26-27-16) - M.Tech Data Science
-Anirudhha Pandey (Reg No: 26-27-17) - M.Tech Data Science
-Sourabh Dang (Reg No: 26-27-18) - M.Tech Data Science
-Astha Deshmukh (Reg No: 26-14-06) - M.Tech Modeling & Simulation
+
+<br>
+
+* **Ritik Joshi** (Reg No: 26-27-16) - M.Tech Data Science
+* **Anirudhha Pandey** (Reg No: 26-27-17) - M.Tech Data Science
+* **Sourabh Dang** (Reg No: 26-27-18) - M.Tech Data Science
+* **Astha Deshmukh** (Reg No: 26-14-06) - M.Tech Modeling & Simulation
 ---
 
 ## 📌 Project Synopsis & Objectives
