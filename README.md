@@ -75,11 +75,8 @@ If the perturbation passes the statistical gatekeeper, its Euclidean distance to
 
 ## 📊 Visual Proof
 
-*(Insert high-resolution comparative plots here displaying the original dino geometry vs. the morphed SA star geometry)*
-
 <div align="center">
-  <img src="Assets/dino.png" width="45%" />
-  <img src="Assets/star_sa.png" width="45%" />
+  <img src="Assets/star_sa.png" width="90%" alt="Dino to Star Geometric Morphing" />
 </div>
 
 > **Note on Geometric "Noise":** The slight geometric scattering observed in the final star shape is the direct physical manifestation of the strict mathematical constraints holding the variance and correlation steady. The algorithm found the absolute closest physical approximation of a star that mathematically still acts like a dinosaur.
