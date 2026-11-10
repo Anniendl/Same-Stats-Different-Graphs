@@ -1,39 +1,29 @@
 <div align="center">
   <h1>🦖 Same Stats, Different Graphs</h1>
-  <h3>Geometric Morphing via Simulated Annealing under Strict Statistical Constraints</h3>
+  <h3>Statistical Validation and Geometric Morphing via Simulated Annealing</h3>
   
   [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
   [![NumPy](https://img.shields.io/badge/NumPy-Pure-green.svg)](https://numpy.org/)
   [![Status](https://img.shields.io/badge/Status-Completed-success.svg)]()
-  
-  <p><i>An M.Tech Data Science Implementation highlighting the critical necessity of spatial visualization in statistical analysis.</i></p>
 </div>
 
 ---
 
-## 📌 The Premise
+## 📌 Project Synopsis & Objectives
 
-Summary statistics (Mean, Variance, Pearson Correlation) are foundational to data science, but they possess a critical blind spot: radically divergent spatial geometries can share identical statistical signatures. 
+This repository contains a Master's-level implementation exploring the limitations of summary statistics in data visualization. The project demonstrates that radically divergent spatial geometries can share identical statistical signatures, transitioning from foundational mathematical proofs to advanced stochastic optimization.
 
-Inspired by **Anscombe’s Quartet** and the **Datasaurus Dozen**, this project transitions from baseline statistical proofs to advanced stochastic optimization. We engineered a Simulated Annealing algorithm capable of morphing a starting point cloud (`dino`) into a target geometry (`star`), while actively restricting statistical drift to a microscopic tolerance window. 
-
-Evaluators relying solely on summary statistics would be mathematically unable to distinguish the original dinosaur point cloud from the morphed star geometry.
-
----
-
-## ⚖️ Academic Constraints & Engineering Choices
-
-To ensure rigorous proof of work and adhere to strict evaluation criteria, this repository was built under the following constraints:
-
-1. **Pure NumPy Architecture:** High-level, "black-box" statistical libraries (e.g., `SciPy`, `scikit-learn`) were strictly prohibited. All metrics—Mean, Sample Variance, Pearson $r$, and Ordinary Least Squares (OLS) regression—were manually engineered using pure `numpy` arrays.
-2. **Transparent Execution (No Automated Looping):** To provide an auditable, transparent proof of mathematical logic, automated `for` loops were abandoned during the baseline validation phases. The datasets were processed explicitly, cell-by-cell, highlighting the raw computational labor and exposing the intermediate steps of the mathematical proofs.
-3. **Strict Separation of Concerns:** Extract, Transform, Load (ETL) operations are strictly siloed from downstream statistical processing to maintain professional software architecture standards.
+The project was executed across **four core implementations**:
+1. **Pure NumPy Statistical Engineering:** Computing Mean, Variance, Pearson correlation ($r$), and Ordinary Least Squares (OLS) regression strictly using pure NumPy, prohibiting "black-box" libraries (e.g., SciPy, scikit-learn).
+2. **Anscombe's Quartet Validation:** Proving manually that the four distinct datasets in Anscombe's Quartet share identical baseline statistics.
+3. **Datasaurus Dozen Validation:** Expanding the mathematical proof to 13 complex geometric datasets, verifying their statistical equivalence.
+4. **Stochastic Shape Morphing:** Implementing a Simulated Annealing algorithm to morph a starting point cloud (`dino`) into a target geometry (`star`) while strictly restricting statistical drift.
 
 ---
 
 ## 🗂️ Repository Architecture
 
-The project is structured sequentially across four primary Jupyter Notebooks:
+The repository is structured sequentially across four primary Jupyter Notebooks to strictly isolate the ETL pipeline from the downstream mathematical processing:
 
 ```text
 📦 Same-Stats-Different-Graphs
@@ -41,35 +31,38 @@ The project is structured sequentially across four primary Jupyter Notebooks:
  ┃ ┣ 📜 anscombe_clean.csv
  ┃ ┗ 📜 datasaurus_clean.csv
  ┣ 📂 Notebook
- ┃ ┣ 📜 01_data_cleaning_sourabh.ipynb       # Phase 1: ETL Pipeline & Float64 Casting
- ┃ ┣ 📜 02_anscombe_stats_ritik.ipynb        # Phase 2a: Anscombe's Quartet Baseline
- ┃ ┣ 📜 03_datasaurus_stats_processing.ipynb # Phase 2b: Datasaurus Dozen Validation
- ┃ ┗ 📜 04_simulated_annealing.ipynb         # Phase 3: Stochastic Optimization Engine
+ ┃ ┣ 📜 01_data_cleaning_sourabh.ipynb       # ETL Pipeline & Data Sanitization
+ ┃ ┣ 📜 02_anscombe_stats_ritik.ipynb        # Anscombe's Quartet Baseline Math
+ ┃ ┣ 📜 03_datasaurus_stats_processing.ipynb # Datasaurus Dozen Validation
+ ┃ ┗ 📜 04_simulated_annealing.ipynb         # Stochastic Optimization Engine
  ┣ 📂 Assets
- ┃ ┣ 🖼️ anscombe.png
- ┃ ┣ 🖼️ dino.png
  ┃ ┗ 🖼️ star_sa.png
  ┗ 📜 README.md
 ```
 
 ---
 
-## ⚙️ The Mathematical Engine: Simulated Annealing
+## ⚙️ Phase 1 & 2: Baseline Mathematical Validation
 
-The core of Phase 3 is a stochastic optimization algorithm designed to manipulate coordinates without triggering statistical alarms. 
+Before any optimization occurred, the data was strictly sanitized (handling nulls, duplicates, and `float64` casting). We then established immutable statistical baselines for all 17 datasets (4 Anscombe, 13 Datasaurus).
 
-### 1. The Gatekeeper (Statistical Constraint)
-A random coordinate is selected and perturbed via Gaussian noise. The modified dataset is immediately processed through the custom NumPy functions. If the new variance or correlation deviates from the original `dino` baseline by a tolerance greater than **`0.1`**, the move is instantly rejected.
+For our primary target subset (`dino`), the custom NumPy functions confirmed the following strict baseline:
+* **Mean (X, Y):** 54.2633, 47.8323
+* **Variance (X, Y):** 281.0700, 725.5160
+* **Pearson Correlation:** -0.0645
 
-### 2. The Objective Function (Spatial Cost)
-If the perturbation passes the statistical gatekeeper, its Euclidean distance to the target `star` geometry is calculated. Moves that decrease this cost are accepted. To prevent the points from becoming trapped in local minima, moves that *increase* the cost are accepted probabilistically based on the current system temperature $T$, defined by the formula: $P = e^{(-\Delta \text{Cost} / T)}$.
+---
 
-### Engine Performance Metrics
-* **Iterations Executed:** 150,000
-* **Cooling Rate:** 0.9995
-* **Initial Spatial Cost:** 1103.80
-* **Final Spatial Cost:** 216.86
-* **Result:** Achieved an **80.35% reduction** in spatial divergence while perfectly preserving the dataset's statistical signature.
+## 🚀 Phase 3: Simulated Annealing Engine
+
+The final implementation manipulates coordinates to form a new target geometry (`star`) without triggering statistical alarms. 
+
+* **The Gatekeeper:** Perturbations are accepted only if the new variance or correlation deviates from the original `dino` baseline by a strict mathematical tolerance of `≤ 0.1`.
+* **The Objective Function:** Moves that decrease the Euclidean distance to the target `star` geometry are accepted. To escape local minima, moves increasing spatial cost are accepted probabilistically based on the system temperature $T$: $P = e^{(-\Delta \text{Cost} / T)}$.
+
+**Performance Metrics:**
+* **Iterations:** 150,000 | **Cooling Rate:** 0.9995
+* **Cost Reduction:** 80.35% (Initial: 1103.80 $\rightarrow$ Final: 216.86)
 
 ---
 
@@ -85,14 +78,14 @@ If the perturbation passes the statistical gatekeeper, its Euclidean distance to
 
 ## 👥 Team & Contributions
 
-* **Aradhya Dev Tripathi (Lead):** Architecture Design & Simulated Annealing Engine Optimization
-* **Sourabh:** ETL Pipeline & Data Sanitization
-* **Ritik:** Pure NumPy Baseline Mathematical Equations
-* **Astha:** Documentation, Visualization, and Reporting Framework
+* **Aniruddha:** Project Lead, Architecture Design & Simulated Annealing Engine
+* **Sourabh:** ETL Pipeline & Data Sanitization Framework
+* **Ritik:** Pure NumPy Baseline Mathematical Proofs
+* **Astha:** LaTeX Reporting, Visualization, & Project Documentation
 
 ---
 
-## 🚀 How to Run
+## 💻 How to Run
 
 1. Clone the repository: `git clone https://github.com/Anniendl/Same-Stats-Different-Graphs.git`
 2. Ensure dependencies are installed: `pip install numpy pandas matplotlib`
