@@ -7,11 +7,8 @@
   [![Status](https://img.shields.io/badge/Status-Completed-success.svg)]()
 </div>
 Ritik Joshi (Reg No: 26-27-16) - M.Tech Data Science
-
 Anirudhha Pandey (Reg No: 26-27-17) - M.Tech Data Science
-
 Sourabh Dang (Reg No: 26-27-18) - M.Tech Data Science
-
 Astha Deshmukh (Reg No: 26-14-06) - M.Tech Modeling & Simulation
 ---
 
