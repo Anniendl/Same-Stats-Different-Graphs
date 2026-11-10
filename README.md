@@ -11,7 +11,7 @@
 
 ## 📌 Project Synopsis & Objectives
 
-This repository contains a Master's-level implementation exploring the limitations of summary statistics in data visualization. The project demonstrates that radically divergent spatial geometries can share identical statistical signatures, transitioning from foundational mathematical proofs to advanced stochastic optimization.
+This project explores the critical limitations of summary statistics in data visualization, demonstrating how radically divergent spatial geometries can share identical statistical signatures. It transitions from foundational mathematical proofs to advanced stochastic optimization.
 
 The project was executed across **four core implementations**:
 1. **Pure NumPy Statistical Engineering:** Computing Mean, Variance, Pearson correlation ($r$), and Ordinary Least Squares (OLS) regression strictly using pure NumPy, prohibiting "black-box" libraries (e.g., SciPy, scikit-learn).
