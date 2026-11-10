@@ -7,7 +7,7 @@
   [![Status](https://img.shields.io/badge/Status-Completed-success.svg)]()
   
   <br>
-  <strong>Course: AM609L DSTT Lab</strong>
+  <strong>Subject: AM609L DSTT Lab</strong>
 </div>
 
 <br>
