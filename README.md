@@ -28,14 +28,22 @@ The repository is structured sequentially across four primary Jupyter Notebooks 
 ```text
 📦 Same-Stats-Different-Graphs
  ┣ 📂 Data
- ┃ ┣ 📜 anscombe_clean.csv
- ┃ ┗ 📜 datasaurus_clean.csv
+ ┃ ┣ 📂 Cleaned_Data
+ ┃ ┃ ┣ 📜 anscombe.csv
+ ┃ ┃ ┣ 📜 anscombe_clean.csv
+ ┃ ┃ ┣ 📜 datasaurus.csv
+ ┃ ┃ ┗ 📜 datasaurus_clean.csv
+ ┃ ┗ 📂 Raw_Datasets
+ ┃   ┣ 📂 same-stats-different-graphs-master
+ ┃   ┗ 📂 seaborn-data-master
  ┣ 📂 Notebook
  ┃ ┣ 📜 01_data_cleaning_sourabh.ipynb       # ETL Pipeline & Data Sanitization
  ┃ ┣ 📜 02_anscombe_stats_ritik.ipynb        # Anscombe's Quartet Baseline Math
  ┃ ┣ 📜 03_datasaurus_stats_processing.ipynb # Datasaurus Dozen Validation
  ┃ ┗ 📜 04_simulated_annealing.ipynb         # Stochastic Optimization Engine
  ┣ 📂 Assets
+ ┃ ┣ 🖼️ anscombe.png
+ ┃ ┣ 🖼️ dino.png
  ┃ ┗ 🖼️ star_sa.png
  ┗ 📜 README.md
 ```
