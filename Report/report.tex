@@ -15,6 +15,7 @@
 \usepackage{fancyhdr}
 \usepackage{tocloft}
 \usepackage{caption}
+\usepackage{float}
 
 % ----- Formatting Setup -----
 \hypersetup{colorlinks=true, linkcolor=blue, filecolor=magenta, urlcolor=cyan, citecolor=blue}
@@ -39,40 +40,49 @@
 % ----- Title Page -----
 \begin{titlepage}
     \begin{center}
-        \vspace*{1cm}
-        \Huge \textbf{Same Stats, Different Graphs} \\
-        \vspace{0.5cm}
-        \LARGE Statistical Validation and Geometric Morphing via Simulated Annealing \\
-        \vspace{1.5cm}
-        \Large \textbf{Project Report} \\
-        \vspace{0.5cm}
-        \normalsize Submitted for the evaluation of the course \textbf{AM609L DSTT Lab} \\
-        \vspace{1.5cm}
-        \textbf{Project Team:} \\
-        \vspace{0.5cm}
-        \begin{table}[h!]
-        \centering
-        \large
-        \renewcommand{\arraystretch}{1.5}
-        \begin{tabular}{|l|c|l|}
-        \hline
-        \textbf{Name} & \textbf{Registration No.} & \textbf{Course} \\ \hline
-        Anirudhha Pandey & 26-27-17 & M.Tech Data Science \\ \hline
-        Sourabh Dang & 26-27-18 & M.Tech Data Science \\ \hline
-        Ritik Joshi & 26-27-16 & M.Tech Data Science \\ \hline
-        Astha Deshmukh & 26-14-06 & M.Tech Modeling \& Simulation \\ \hline
-        \end{tabular}
-        \end{table}
+        \vspace*{1.0cm}
+        
+        % --- University Name, Dept, Location, THEN Logo ---
+        {\huge \textbf{Defence Institute of Advanced Technology (DIAT)}}\\[0.3cm]
+        {\LARGE \textbf{Department of Applied Mathematics}}\\[0.2cm]
+        {\LARGE Pune, Maharashtra}\\[0.8cm]
+        \includegraphics[width=0.25\textwidth]{diat_logo.png} \\[2.5cm]
+
+        {\Huge \textbf{Same Stats, Different Graphs}} \\[0.5cm]
+        {\LARGE Statistical Validation and Geometric Morphing via Simulated Annealing} \\[2.5cm]
+        
+        {\Large \textbf{Project Report}} \\[0.5cm]
+        {\normalsize Submitted for the evaluation of the subject \textbf{AM609L DSTT Lab}}
+        
         \vfill
-        \Large \textbf{Department of Applied Mathematics}\\
-        \textbf{Defence Institute of Advanced Technology (DIAT)}\\
-        Pune, Maharashtra\\
-        \vspace{0.5cm}
-        November 2026
+        
+        {\Large November 2026}
+        
     \end{center}
 \end{titlepage}
 
 \newpage
+
+% ----- Project Team and Roles -----
+\section*{Project Team}
+\addcontentsline{toc}{section}{Project Team}
+\vspace{0.5cm}
+\begin{table}[H]
+\centering
+\large
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{Name} & \textbf{Registration No.} & \textbf{Course} \\ \hline
+Ritik Joshi & 26-27-16 & M.Tech Data Science \\ \hline
+Anirudhha Pandey & 26-27-17 & M.Tech Data Science \\ \hline
+Sourabh Dang & 26-27-18 & M.Tech Data Science \\ \hline
+Astha Deshmukh & 26-14-06 & M.Tech Modeling \& Simulation \\ \hline
+\end{tabular}
+\end{table}
+
+\vspace{1cm}
+
 \section*{Team Contributions}
 \addcontentsline{toc}{section}{Team Contributions}
 \begin{itemize}
@@ -90,10 +100,11 @@ Summary statistics are the bedrock of exploratory data analysis, yet relying exc
 
 \newpage
 \tableofcontents
+
 \newpage
 \listoffigures
-\newpage
 
+\newpage
 \section{Introduction}
 \subsection{The Vulnerability of Summary Statistics}
 In modern data science, datasets are routinely abstracted into summary statistics to gauge distributions efficiently. However, this abstraction is mathematically incomplete. When evaluated without spatial visualization, heavily skewed or clustered datasets can masquerade as normal distributions, leading to flawed predictive models and corrupted data pipelines.
@@ -107,6 +118,7 @@ This project transitions from foundational mathematical proofs to advanced stoch
     \item \textbf{Stochastic Shape Morphing:} Implementing a Simulated Annealing algorithm bounded by strict statistical constraints to autonomously morph a starting point cloud into a defined geometric target.
 \end{enumerate}
 
+\newpage
 \section{Literature Integration and Theoretical Framework}
 This project's architecture was heavily informed by two seminal works in data visualization, transitioning their theoretical frameworks into applied computational logic.
 
@@ -116,11 +128,13 @@ Francis Anscombe's foundational paper, \textit{"Graphs in Statistical Analysis"}
 \subsection{Integration of Matejka \& Fitzmaurice (2017)}
 The optimization engine in Phase IV is directly derived from Matejka and Fitzmaurice's research, \textit{"Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing"} \cite{matejka2017}. While their paper provided the theoretical proof that random point clouds could be directed into specific shapes, our team engineered the computational application. We specifically adapted their thermodynamic cooling logic to formulate our system's acceptance probability function for suboptimal moves: $P(\text{Accept}) = \exp\left(\frac{-\Delta \text{Cost}}{T}\right)$, ensuring the algorithm escaped local spatial minima while locked within statistical bounds.
 
+\newpage
 \section{Methodology Phase I: Data Sanitization (ETL Pipeline)}
 Before statistical processing, the raw datasets required aggressive sanitization. The Extract, Transform, Load (ETL) pipeline was engineered to strip null values, resolve coordinate overlaps, and uniformly cast all spatial data into \texttt{float64} precision. 
 
 To optimize computational efficiency for the downstream stochastic engine, the pipeline was designed to ingest the raw source files (\texttt{anscombe.csv} and \texttt{datasaurus.csv}) and output entirely new, sanitized repositories (\texttt{anscombe\_clean.csv} and \texttt{datasaurus\_clean.csv}). This file I/O optimization ensured that the Simulated Annealing iterations processed pristine data frames, eliminating the risk of floating-point rounding errors triggering false rejections by the mathematical Gatekeeper.
 
+\newpage
 \section{Methodology Phase II: Anscombe's Quartet Mathematical Proof}
 \subsection{Operational Overview and Source Data}
 The second phase of the project transitions from data preparation to foundational mathematical validation, executed entirely within the \texttt{02\_anscombe\_stats\_ritik.ipynb} notebook. The primary objective was to computationally replicate the theoretical proof established in Francis Anscombe's 1973 paper \cite{anscombe1973}. The pipeline ingested the sanitized \texttt{anscombe\_clean.csv} file, which isolates the four original Anscombe datasets into distinct coordinate arrays. 
@@ -153,12 +167,13 @@ To ensure complete computational transparency, the use of statistical abstractio
 \subsection{Results and Validation}
 Executing these algorithms across the datasets yielded identical numerical outputs. Across all four subsets, the engine calculated an $X$ mean of 9.00, a $Y$ mean of 7.50, an $X$ variance of 11.00, a $Y$ variance of 4.12, a correlation of 0.816, and an OLS regression line of $y = 3.00 + 0.50x$. 
 
-\begin{figure}[htbp]
-\centerline{\includegraphics[width=0.8\textwidth]{anscombe.png}}
+\begin{figure}[H]
+\centerline{\includegraphics[width=\textwidth]{anscombe_grid.png}}
 \caption{Baseline NumPy validation of Anscombe's Quartet, plotted from \texttt{anscombe\_clean.csv}. The visual plots confirm drastically different spatial distributions (linear, non-linear, outlier-driven) despite sharing the exact same calculated regression trajectories.}
 \label{fig:anscombe}
 \end{figure}
 
+\newpage
 \section{Methodology Phase III: Datasaurus Dozen Scale Validation}
 \subsection{Operational Overview and Source Data}
 Building upon the Anscombe validation, the third phase scaled the computational architecture to handle complex geometric clustering. Executed via \texttt{03\_datasaurus\_stats\_processing.ipynb}, this phase ingested \texttt{datasaurus\_clean.csv}. This dataset, conceptualized by Matejka and Fitzmaurice \cite{matejka2017}, expands the Anscombe illusion to 13 highly distinct spatial shapes. 
@@ -174,7 +189,7 @@ By applying the logic to the primary \textit{dino} subset, the pipeline locked i
     \item \textbf{OLS Regression:} $y = 53.45 - 0.10x$
 \end{itemize}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centerline{\includegraphics[width=0.8\textwidth]{dino.png}}
 \caption{The unperturbed baseline Datasaurus geometry alongside its least-squares regression line, establishing the starting physical state for the final morphological engine.}
 \label{fig:dino}
@@ -183,12 +198,13 @@ By applying the logic to the primary \textit{dino} subset, the pipeline locked i
 \subsection{Scale Validation Results}
 The operation confirmed that despite forming completely different geometries—including concentric circles, a five-pointed star, and a dinosaur—all 13 datasets return the exact same baseline statistics. This phase definitively proved that relying on summary statistics without high-resolution visual rendering can mask extreme spatial variances in data science pipelines.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centerline{\includegraphics[width=\textwidth]{datasaurus_grid.png}}
 \caption{Visual representation of the Datasaurus Dozen subsets. Computed via the custom NumPy engine, every shape pictured shares identical mean, variance, Pearson correlation coefficients, and least-squares regression lines.}
 \label{fig:datasaurus_grid}
 \end{figure}
 
+\newpage
 \section{Methodology Phase IV: Simulated Annealing Optimization Engine}
 \subsection{Operational Overview and Source Data}
 The final phase operationalized the theoretical framework of Matejka and Fitzmaurice \cite{matejka2017} by deploying a stochastic optimization engine. Executed within \texttt{04\_simulated\_annealing.ipynb}, the engine ingested the \textit{dino} subset from \texttt{datasaurus\_clean.csv} with the objective of morphing its coordinates into the \textit{star} geometry without violating the established statistical baseline.
@@ -210,10 +226,11 @@ P(\text{Accept}) = \exp\left(\frac{-\Delta \text{Cost}}{T}\right)
 \end{equation}
 The engine was initialized with a temperature of $T = 100.0$ and subjected to an exponential cooling decay rate of $0.9995$ over 150,000 algorithmic iterations.
 
+\newpage
 \section{Final Results and Conclusion}
 The initial spatial divergence between the \textit{dino} configuration and the \textit{star} configuration was calculated at a Euclidean cost of $1103.80$. Following the completion of the 150,000 optimization cycles, the final spatial cost plummeted to $216.86$, achieving an $80.35\%$ reduction in spatial error.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centerline{\includegraphics[width=\textwidth]{star_sa.png}}
 \caption{Side-by-side comparison of the baseline \textit{dino} geometry and the final morphological output targeting the \textit{star} geometry. Both visual structures possess mathematically identical statistical signatures.}
 \label{fig:star_sa}
